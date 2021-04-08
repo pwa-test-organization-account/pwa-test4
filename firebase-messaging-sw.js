@@ -1,6 +1,6 @@
 // importScriptsはservice worker内から他のserviceworkerを読み込むときに使えます
-importScripts("https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js");
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
