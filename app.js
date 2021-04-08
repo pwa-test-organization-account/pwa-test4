@@ -11,6 +11,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
+onPushConsole('initializeApp done.');
 
 //パーミッションチェックします。
 messaging.requestPermission()
@@ -20,14 +21,14 @@ messaging.requestPermission()
 	})
 	.then(function(token){
 		//あとでcurlコマンドにセットするデバイストークンを出力します
-		onPushConsole(token);
+		onPushConsole("getToken done. " + token);
 	})
 	.catch(function(err){
 		onPushConsole('error Occuerd at getpermission');
 		return messaging.getToken();
 	})
 	.then(function(token){
-		onPushConsole(token);
+		onPushConsole("getToken catch done. " + token);
 	});
 
 messaging.usePublicVapidKey('BHpxgae0JS7fuiHkqbuZLib2hmLLXFwFtk91boqxWQECjj0ESvfsFerWrkZ_bNJDLH5B9HFUPIMGGE0EKOwEJCg');
@@ -36,7 +37,7 @@ messaging.onMessage(function(payload){
 });
 
 function onPushConsole(text) {
-    const console = document.querySelector('#token-console');
-    var content = console.textContent;
-    console.textContent = content + "\n" + text;
+    const $console = $("#token-console");
+    var content = $console.text();
+    $console.text(content + "\n" + text);
 }
