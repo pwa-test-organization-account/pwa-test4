@@ -31,6 +31,9 @@ messaging.requestPermission()
 	})
 	.then(function(token){
 		console.log(token);
+	
+		const console = document.querySelector('#token-console');
+		console.textContent = token;
 	});
 
 messaging.usePublicVapidKey('BHpxgae0JS7fuiHkqbuZLib2hmLLXFwFtk91boqxWQECjj0ESvfsFerWrkZ_bNJDLH5B9HFUPIMGGE0EKOwEJCg');
