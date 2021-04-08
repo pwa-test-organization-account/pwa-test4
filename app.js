@@ -15,28 +15,28 @@ const messaging = firebase.messaging();
 //パーミッションチェックします。
 messaging.requestPermission()
 	.then(function(){
-		console.log('Have permission');
+		onPushConsole('Have permission');
 		return messaging.getToken();
 	})
 	.then(function(token){
 		//あとでcurlコマンドにセットするデバイストークンを出力します
-		console.log(token);
-	
-		const console = document.querySelector('#token-console');
-		console.textContent = token;
+		onPushConsole(token);
 	})
 	.catch(function(err){
-		console.log('error Occuerd at getpermission');
+		onPushConsole('error Occuerd at getpermission');
 		return messaging.getToken();
 	})
 	.then(function(token){
-		console.log(token);
-	
-		const console = document.querySelector('#token-console');
-		console.textContent = token;
+		onPushConsole(token);
 	});
 
 messaging.usePublicVapidKey('BHpxgae0JS7fuiHkqbuZLib2hmLLXFwFtk91boqxWQECjj0ESvfsFerWrkZ_bNJDLH5B9HFUPIMGGE0EKOwEJCg');
 messaging.onMessage(function(payload){
-	console.log('onMessage:',payload);
+	onPushConsole('onMessage:' + payload);
 });
+
+function onPushConsole(text) {
+    const console = document.querySelector('#token-console');
+    var content = console.textContent;
+    console.textContent = content + "\n" + text;
+}
