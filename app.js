@@ -21,6 +21,9 @@ messaging.requestPermission()
 	.then(function(token){
 		//あとでcurlコマンドにセットするデバイストークンを出力します
 		console.log(token);
+	
+		const console = document.querySelector('#token-console');
+		console.textContent = token;
 	})
 	.catch(function(err){
 		console.log('error Occuerd at getpermission');
