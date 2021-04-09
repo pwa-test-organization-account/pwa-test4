@@ -9,9 +9,11 @@ var firebaseConfig = {
     appId: "1:758160015443:web:ddb85ce82488df229ac6a6"
 };
 // Initialize Firebase
+onPushConsole('initializeApp start.');
 firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
 onPushConsole('initializeApp done.');
+const messaging = firebase.messaging();
+onPushConsole('messaging make success.');
 
 //パーミッションチェックします。
 messaging.requestPermission()
